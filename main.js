@@ -11,8 +11,8 @@ function Init() {
     prepareLayout()
     generatingCardArray()
     shuffleCards(cards)
-    renderGame()
     cardsAdd()
+
 }
 
 function prepareLayout() {
@@ -28,23 +28,24 @@ function prepareLayout() {
 
     var cardsAdd = cards.forEach(function (element, index) {
         var card = document.createElement('div')
-        card.classList.add("game-tile")
+        card.classList.add("game-card")
         divBoard.appendChild(card)
 
         card.dataset.cardType = cards[index]
         card.dataset.index = index
 
-        card.style.left = 5 + (card.offsetWidth+10) * (i%cardsOnRow) + 'px'
-        card.style.top = 5 + (card.offsetHeight+10) * (Math.floor(i/cardsOnRow)) + 'px';
+        card.style.left = 5 + (card.offsetWidth+10) * (index%cardsOnRow) + 'px'
+        card.style.top = 5 + (card.offsetHeight+10) * (Math.floor(index/cardsOnRow)) + 'px';
 
-        return cardsAdd
+
 
     })
+        return cardsAdd
 }
 
 function generatingCardArray() {
 
-    for (var i=1; i<cardsCount;i++){
+    for (var i=0; i<cardsCount;i++){
         cards.push(Math.floor(i/2))
     }
 }
@@ -59,8 +60,10 @@ function shuffleCards(arr) {
         var ind = Math.floor(Math.random() * counter)
         counter--
         var temp = tmpArr[counter]
-        console.log(temp)
 
+        tmpArr[counter] = tmpArr[ind]
+
+        tmpArr[ind] = temp
 
     }
 }

@@ -13,7 +13,7 @@
     cursor: pointer;
     width: 100px;
     height: 100px;
-    background: #f6da17 url(images/title.png) center center no-repeat;
+    background: #f6da17
 }
 
 .game-card:hover {
